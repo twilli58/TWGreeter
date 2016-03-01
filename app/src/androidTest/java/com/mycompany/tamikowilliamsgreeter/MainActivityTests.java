@@ -15,6 +15,7 @@ public class MainActivityTests extends
     public MainActivityTests() {
         super(MainActivity.class);
     }
+
     public void testActivityExists() {
         MainActivity activity = getActivity();
         assertNotNull(activity);
@@ -22,9 +23,13 @@ public class MainActivityTests extends
     public void testGreet() {
         MainActivity activity = getActivity();
 
+        // Type name in text input
+        // ----------------------
+
         final EditText nameEditText =
                 (EditText) activity.findViewById(R.id.greet_edit_text);
 
+        // Send string input value
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
@@ -50,5 +55,24 @@ public class MainActivityTests extends
         TextView greetMessage = (TextView) activity.findViewById(R.id.message_text_view);
         String actualText = greetMessage.getText().toString();
         assertEquals("Hello, Jake!", actualText);
+
+    }
+    public void testReverseDisabled(){
+        MainActivity activity = getActivity();
+
+        Button reverseButton =
+                (Button) activity.findViewById(R.id.reverse_button);
+        reverseButton.performClick();
+        assertFalse(reverseButton.isEnabled());
+
+    }
+    public void testReverseEnabled(){
+        MainActivity activity = getActivity();
+
+        Button reverseButton =
+                (Button) activity.findViewById(R.id.reverse_button);
+        reverseButton.performClick();
+        //assertTrue(reverseButton.isEnabled());
     }
 }
+
