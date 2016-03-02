@@ -57,7 +57,7 @@ public class MainActivityTests extends
         assertEquals("Hello, Jake!", actualText);
 
     }
-    public void testReverseDisabled(){
+   /** public void testReverseDisabled(){
         MainActivity activity = getActivity();
 
         Button reverseButton =
@@ -72,7 +72,7 @@ public class MainActivityTests extends
         Button reverseButton =
                 (Button) activity.findViewById(R.id.reverse_button);
         reverseButton.performClick();
-        //assertTrue(reverseButton.isEnabled());
-    }
+        assertTrue(reverseButton.isEnabled());
+    }*/
 }
 

@@ -44,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
 
         messageTextView.setText(greeting);
     }
+    public void reverseTextButton(View view) {
+        final TextView reverseTextView = (TextView)findViewById(R.id.message_text_view);
+        String original = reverseTextView.getText().toString();
+        StringBuilder string = new StringBuilder(original);
+        String reverse = string.reverse().toString();
+        reverseTextView.setText(reverse);
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -35,7 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/greet_edit_text"
         android:layout_toRightOf="@id/greet_button"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:onClick="reverseTextButton"/>
 
     <TextView
         android:id="@+id/message_text_view"
