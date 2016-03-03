@@ -23,23 +23,7 @@ public class MainActivityTests extends
     public void testGreet() {
         MainActivity activity = getActivity();
 
-        // Type name in text input
-        // ----------------------
-
-        final EditText nameEditText =
-                (EditText) activity.findViewById(R.id.greet_edit_text);
-
-        // Send string input value
-        getInstrumentation().runOnMainSync(new Runnable() {
-            @Override
-            public void run() {
-                nameEditText.requestFocus();
-            }
-        });
-
-        getInstrumentation().waitForIdleSync();
-        getInstrumentation().sendStringSync("Jake");
-        getInstrumentation().waitForIdleSync();
+        this.runHelper();
 
         // Tap "Greet" button
         // ----------------------
@@ -79,27 +63,11 @@ public class MainActivityTests extends
     public void testTextIsReversed() {
         MainActivity activity = getActivity();
         Button greetButton =
-                (Button) activity.findViewById(R.id.greet_button);
+               (Button) activity.findViewById(R.id.greet_button);
         Button reverseButton =
                 (Button) activity.findViewById(R.id.reverse_button);
 
-
-
-        final EditText nameEditText =
-                (EditText) activity.findViewById(R.id.greet_edit_text);
-
-        // Send string input value
-        getInstrumentation().runOnMainSync(new Runnable() {
-            @Override
-            public void run() {
-                nameEditText.requestFocus();
-            }
-        });
-
-        getInstrumentation().waitForIdleSync();
-        getInstrumentation().sendStringSync("Jake");
-        getInstrumentation().waitForIdleSync();
-
+        this.runHelper();
         TouchUtils.clickView(this, greetButton);
 
         TextView greetMessage = (TextView) activity.findViewById(R.id.message_text_view);
@@ -114,5 +82,23 @@ public class MainActivityTests extends
         assertEquals("!ekaJ ,olleH", reverseText);
 
     }
+    //*****************Helper Method ****************
+
+    private void runHelper() {
+        MainActivity activity = getActivity();
+        final EditText nameEditText =
+                (EditText) activity.findViewById(R.id.greet_edit_text);
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                nameEditText.requestFocus();
+            }
+        });
+
+        getInstrumentation().waitForIdleSync();
+        getInstrumentation().sendStringSync("Jake");
+        getInstrumentation().waitForIdleSync();
+    }
+
 }
 
